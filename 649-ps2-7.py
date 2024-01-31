@@ -1,3 +1,5 @@
+import math
+
 class Environment:
     def __init__(self, location: int, is_a_clean: bool, is_b_clean: bool):
         self.location : int = location # 0 if in A, 1 if in B
@@ -36,6 +38,8 @@ def main():
     statesOfB = [True, False]
 
     env_num = 1
+    scores = []
+
     for location in locations:
         for stateOfA in statesOfA:
             for stateOfB in statesOfB:
@@ -46,7 +50,10 @@ def main():
                     env.iterate()
                 
                 print(f"Final Score: {env.score}")
+                scores.append(env.score)
                 env_num += 1
+    
+    print(f"Average Score: {sum(scores)/len(scores)}")
 
 if __name__ == "__main__":
     main()
