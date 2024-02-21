@@ -148,36 +148,26 @@ def search(mode : str) -> int:
     return -1 # if failure, return -1 so it is not included in the sucessful solutions
 
 if __name__ == "__main__":
-    print("==========RANDOM SELECTION==========")
+    print("Select Mode:\n1) Random Selection\n2) Cyclic Selection")
+    selection = input("Select Mode (1 or 2): ")
+
+    if selection == 1:
+       mode = "random"
+       print("==========RANDOM SELECTION==========")
+    else:
+       mode = "cyclic"
+       print("==========CYCLIC SELECTION==========")
 
     evals = []
 
     for i in range(10):
         print(f"Algorithm Run #{i+1}")
-        solution = search("random")
+        solution = search(mode)
 
         if solution > 0:
           evals.append(solution)
         EVALS = 0
       
-    # normalize data by removing high and low.
-    evals.remove(max(evals))
-    evals.remove(min(evals))
-
-    print(f"Average # of Evaluations: {round(sum(evals)/len(evals), 0)}.")
-
-    print("==========CYCLIC SELECTION==========")
-
-    evals = []
-
-    for i in range(10):
-        print(f"Algorithm Run #{i+1}")
-        solution = search("cyclic")
-
-        if solution > 0:
-          evals.append(solution)
-        EVALS = 0
-    
     # normalize data by removing high and low.
     evals.remove(max(evals))
     evals.remove(min(evals))
